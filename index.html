@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sakina Scrubs — Digital Strategy Proposal by Forward Project X</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0f2340;
+      --navy-mid: #1a3c5e;
+      --blue: #2e6cb0;
+      --blue-light: #e8f1fb;
+      --gold: #b5892a;
+      --gold-light: #fdf6e3;
+      --sand: #f7f4ef;
+      --white: #ffffff;
+      --gray: #5a5a5a;
+      --gray-light: #e8e6e1;
+      --text: #1a1a1a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--sand);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(15, 35, 64, 0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-brand {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.04em;
+      font-weight: 300;
+    }
+    .nav-brand span { color: var(--gold); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 120px 80px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(46,108,176,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: 200px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(181,137,42,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.08;
+      max-width: 800px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.4s;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: rgba(255,255,255,0.55);
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 48px;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.6s;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 48px;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.8s;
+    }
+    .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .hero-meta-item .label {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      font-weight: 500;
+    }
+    .hero-meta-item .value {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      font-weight: 400;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 80px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1.2s;
+    }
+    .hero-scroll::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 100px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    section.full-width {
+      max-width: 100%;
+      padding: 0;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 32px;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--blue);
+    }
+
+    p {
+      color: var(--gray);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── DIVIDER ── */
+    .rule {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 60px;
+      opacity: 0.5;
+    }
+
+    /* ── OPPORTUNITY SECTION ── */
+    #opportunity { background: var(--white); max-width: 100%; padding: 100px 0; }
+    #opportunity .inner { max-width: 1100px; margin: 0 auto; padding: 0 80px; }
+
+    /* ── DELIVERABLES ── */
+    #scope { background: var(--sand); }
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 48px;
+      background: var(--gray-light);
+    }
+    .deliverable-card {
+      background: var(--white);
+      padding: 40px;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .deliverable-card:hover { background: #fafafa; }
+    .deliverable-num {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      color: var(--blue-light);
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .deliverable-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .deliverable-desc {
+      font-size: 0.92rem;
+      color: var(--gray);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ── WHY ── */
+    #why { background: var(--navy); max-width: 100%; padding: 100px 0; }
+    #why .inner { max-width: 1100px; margin: 0 auto; padding: 0 80px; }
+    #why .section-title { color: var(--white); }
+    #why .section-label { color: var(--gold); }
+    #why p { color: rgba(255,255,255,0.55); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-top: 60px;
+    }
+    .why-card {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 32px;
+    }
+    .why-card-title {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .why-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── TIMELINE ── */
+    #timeline { background: var(--white); max-width: 100%; padding: 100px 0; }
+    #timeline .inner { max-width: 1100px; margin: 0 auto; padding: 0 80px; }
+
+    .timeline-rows { margin-top: 48px; }
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 40px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--gray-light);
+      align-items: start;
+    }
+    .timeline-row:last-child { border-bottom: none; }
+    .timeline-week {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--blue);
+      padding-top: 3px;
+    }
+    .timeline-content-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .timeline-content p {
+      font-size: 0.92rem;
+      color: var(--gray);
+      margin: 0;
+      font-weight: 300;
+    }
+
+    /* ── PHASE 2 ── */
+    #phase2 { background: var(--sand); }
+
+    .phase2-box {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-left: 4px solid var(--blue);
+      padding: 48px;
+      margin-top: 48px;
+    }
+    .phase2-box h3 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .phase2-box p { font-size: 0.95rem; margin-bottom: 12px; }
+
+    /* ── INVESTMENT ── */
+    #investment { background: var(--navy); max-width: 100%; padding: 100px 0; }
+    #investment .inner { max-width: 1100px; margin: 0 auto; padding: 0 80px; }
+    #investment .section-title { color: var(--white); }
+    #investment .section-label { color: var(--gold); }
+
+    .investment-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 64px 48px;
+      text-align: center;
+      margin-top: 48px;
+      position: relative;
+    }
+    .investment-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .investment-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .investment-amount {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 6vw, 5rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .investment-type {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.08em;
+      margin-bottom: 40px;
+    }
+    .investment-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      margin: 0 auto 40px;
+    }
+    .investment-desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+      max-width: 560px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* ── NEXT STEP ── */
+    #next { background: var(--white); max-width: 100%; padding: 100px 0; }
+    #next .inner { max-width: 1100px; margin: 0 auto; padding: 0 80px; }
+
+    /* ── CONTACT ── */
+    .contact-block {
+      background: var(--sand);
+      border: 1px solid var(--gray-light);
+      padding: 48px;
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .contact-greeting {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+    .contact-name {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .contact-title {
+      font-size: 0.85rem;
+      color: var(--blue);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+    }
+    .contact-company {
+      font-size: 0.92rem;
+      color: var(--gray);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .contact-details { display: flex; flex-direction: column; gap: 8px; }
+    .contact-details a, .contact-details span {
+      font-size: 0.9rem;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-details a:hover { color: var(--blue); }
+
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .contact-quote {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1.35;
+      font-style: italic;
+    }
+    .contact-quote em { font-style: normal; color: var(--blue); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 32px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer .brand {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.4);
+      font-weight: 300;
+    }
+    footer .brand span { color: var(--gold); }
+    footer .copy {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-scroll { left: 24px; }
+      section, #opportunity .inner, #why .inner, #timeline .inner,
+      #investment .inner, #next .inner { padding: 60px 24px; }
+      .why-grid { grid-template-columns: 1fr; gap: 32px; }
+      .deliverables-grid { grid-template-columns: 1fr; }
+      .contact-block { grid-template-columns: 1fr; gap: 32px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">Forward Project <span>X</span></div>
+    <div class="nav-links">
+      <a href="#opportunity">Vision</a>
+      <a href="#scope">Scope</a>
+      <a href="#why">Why FPX</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#investment">Investment</a>
+      <a href="#next">Next Step</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">Digital Strategy and Web Development Proposal</div>
+    <h1>A digital home<br /><em>worthy of the<br />brand you built.</em></h1>
+    <p class="hero-sub">Prepared for Huda Abu Sabha and Sakina Scrubs. This proposal outlines a custom web strategy to establish your brand's independent digital presence and community platform.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Prepared by</span>
+        <span class="value">Forward Project X</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Project</span>
+        <span class="value">The Community Hub</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Date</span>
+        <span class="value">April 2026</span>
+      </div>
+    </div>
+    <div class="hero-scroll">Scroll to explore</div>
+  </div>
+
+  <!-- OPPORTUNITY -->
+  <div id="opportunity">
+    <section class="inner reveal">
+      <div class="section-label">The Opportunity</div>
+      <h2 class="section-title">Your brand has outgrown<br /><em>what Etsy can carry.</em></h2>
+      <p>Sakina Scrubs is not just an apparel brand. Through products like the Al Huda Hijab, you are solving a specific and underserved problem: Muslim and Arab women in healthcare have long lacked workwear that supports both modesty and professional function. Your background as a nurse, your participation in entrepreneurship programs, and the media recognition you have already earned are the ingredients of a brand with real credibility and real staying power.</p>
+      <p>Your Etsy storefront has proven that demand exists. But Etsy has a ceiling. It can sell a product. It cannot fully carry a brand story, build a loyal community, or give you the long-term digital foundation that a business like Sakina Scrubs deserves.</p>
+      <p>This project is about closing that gap and giving your brand a home that matches its ambition.</p>
+    </section>
+  </div>
+
+  <!-- SCOPE -->
+  <section id="scope">
+    <div class="reveal">
+      <div class="section-label">Phase 1 Scope</div>
+      <h2 class="section-title">Everything included<br /><em>in this engagement.</em></h2>
+      <p>Phase 1 establishes your independent digital presence. Every element is designed to strengthen the brand, support your audience, and create a foundation for long-term growth.</p>
+    </div>
+    <div class="deliverables-grid">
+      <div class="deliverable-card reveal reveal-delay-1">
+        <div class="deliverable-num">01</div>
+        <div class="deliverable-title">Custom Brand Website</div>
+        <p class="deliverable-desc">A premium, fully custom website experience that presents Sakina Scrubs as a serious brand. Not a template. Not a marketplace listing. A digital home designed around your story, your products, and the problem you solve.</p>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-2">
+        <div class="deliverable-num">02</div>
+        <div class="deliverable-title">Product and Shop Pages</div>
+        <p class="deliverable-desc">Dedicated pages showcasing your products with the depth and quality they deserve. Purchase pathways link to your established Etsy checkout during this phase, preserving your current fulfillment process without disruption.</p>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-1">
+        <div class="deliverable-num">03</div>
+        <div class="deliverable-title">Integrated Blog</div>
+        <p class="deliverable-desc">A blog published directly under your own brand and domain. Your space for founder updates, stories from women in medicine, product education, clinical insights, and community announcements. Content that builds long-term visibility and authority.</p>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-2">
+        <div class="deliverable-num">04</div>
+        <div class="deliverable-title">Community Comments</div>
+        <p class="deliverable-desc">Blog posts include an integrated comment section designed to create space for genuine discussion. Built to favor meaningful engagement and help build a more invested audience around the brand.</p>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-1">
+        <div class="deliverable-num">05</div>
+        <div class="deliverable-title">Editorial Dashboard</div>
+        <p class="deliverable-desc">A private administrative dashboard where you can write posts, upload images, edit content, and publish updates independently. No code, no developer required for day-to-day content management.</p>
+      </div>
+      <div class="deliverable-card reveal reveal-delay-2">
+        <div class="deliverable-num">06</div>
+        <div class="deliverable-title">Mobile-Optimized Design</div>
+        <p class="deliverable-desc">Designed and built to perform beautifully across all screen sizes, ensuring a strong experience whether your audience finds you on a phone, tablet, or desktop.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <div id="why">
+    <section class="inner reveal">
+      <div class="section-label">Why Forward Project X</div>
+      <h2 class="section-title">Three commitments<br /><em>we make to every client.</em></h2>
+      <div class="why-grid">
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-card-title">No Recurring Infrastructure Fees</div>
+          <p>We build on a modern high-performance architecture that delivers a faster, more flexible, and more scalable web foundation with zero recurring hosting infrastructure fees for the core website stack. More of your budget goes toward growing the business.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-card-title">Full Ownership from Day One</div>
+          <p>Your website infrastructure is structured under accounts registered in your name from the very start. At the end of the project, we conduct a live handoff to transfer complete control. No hidden dependency on FPX to keep your site online.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-card-title">Built for Long-Term Growth</div>
+          <p>This is not a website that needs to be replaced when your business grows. The foundation we are building is designed to scale with you, including a direct e-commerce integration path when you are ready to move beyond Etsy.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- TIMELINE -->
+  <div id="timeline">
+    <section class="inner reveal">
+      <div class="section-label">Project Timeline</div>
+      <h2 class="section-title">A focused four-week build<br /><em>with clear milestones.</em></h2>
+      <div class="timeline-rows">
+        <div class="timeline-row reveal">
+          <div class="timeline-week">Week 1</div>
+          <div class="timeline-content">
+            <div class="timeline-content-title">Strategy and Planning</div>
+            <p>Project kickoff, brand discovery, site architecture, and account setup. We align on direction before a single page is built.</p>
+          </div>
+        </div>
+        <div class="timeline-row reveal reveal-delay-1">
+          <div class="timeline-week">Week 2</div>
+          <div class="timeline-content">
+            <div class="timeline-content-title">Design and Development</div>
+            <p>Custom design direction and full frontend development. You will review and approve the visual direction before we finalize.</p>
+          </div>
+        </div>
+        <div class="timeline-row reveal reveal-delay-2">
+          <div class="timeline-week">Week 3</div>
+          <div class="timeline-content">
+            <div class="timeline-content-title">Content and Publishing System</div>
+            <p>Blog build, editorial dashboard setup, and comment integration. Content pages are completed and populated.</p>
+          </div>
+        </div>
+        <div class="timeline-row reveal reveal-delay-3">
+          <div class="timeline-week">Week 4</div>
+          <div class="timeline-content">
+            <div class="timeline-content-title">Testing, Training, and Launch</div>
+            <p>Full quality review, client walkthrough of the dashboard, live handoff process, and site launch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PHASE 2 -->
+  <section id="phase2" class="reveal">
+    <div class="section-label">Looking Ahead</div>
+    <h2 class="section-title">Phase 2:<br /><em>E-Commerce Expansion</em></h2>
+    <div class="phase2-box">
+      <h3>Your next chapter, already planned for.</h3>
+      <p>Phase 1 is designed with your future in mind. When Sakina Scrubs is ready to move beyond Etsy and build a more independent sales channel, the website does not need to be rebuilt.</p>
+      <p>A direct e-commerce layer can be integrated into the existing site structure, allowing you to transition toward your own checkout experience while preserving everything the site has already built in terms of content, structure, and search presence.</p>
+      <p>Phase 1 is a foundation, not a starting point you will outgrow.</p>
+    </div>
+  </section>
+
+  <!-- INVESTMENT -->
+  <div id="investment">
+    <section class="inner reveal">
+      <div class="section-label">Investment</div>
+      <h2 class="section-title">A one-time investment<br /><em>in a long-term asset.</em></h2>
+      <div class="investment-card">
+        <div class="investment-label">Phase 1 Total Investment</div>
+        <div class="investment-amount">$3,500</div>
+        <div class="investment-type">One-time project investment</div>
+        <div class="investment-divider"></div>
+        <p class="investment-desc">This covers the complete Phase 1 scope: custom website design and development, integrated blog, editorial dashboard, community comment system, mobile optimization, and the full live handoff process. No recurring infrastructure fees for the core website stack after delivery.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- NEXT STEP -->
+  <div id="next">
+    <section class="inner reveal">
+      <div class="section-label">Next Step</div>
+      <h2 class="section-title">Ready to build<br /><em>when you are.</em></h2>
+      <p>Upon approval, Forward Project X will begin the strategy and onboarding phase immediately. This includes project kickoff, account structuring under your ownership, and final site architecture planning tailored to the Sakina Scrubs brand.</p>
+      <div class="contact-block">
+        <div class="contact-left">
+          <div class="contact-greeting">Best regards,</div>
+          <div class="contact-name">Ahmad Bazzi</div>
+          <div class="contact-title">Founder and Lead Strategist</div>
+          <div class="contact-company">Forward Project X</div>
+          <div class="contact-details">
+            <span>(313) 743-3273</span>
+            <a href="https://forwardprojectx.com" target="_blank">forwardprojectx.com</a>
+            <a href="mailto:a.a.bazzi@forwardprojectx.com">a.a.bazzi@forwardprojectx.com</a>
+            <span>290 Town Center Dr, Suite 420D</span>
+            <span>Dearborn, MI 48126</span>
+          </div>
+        </div>
+        <div class="contact-right">
+          <div class="contact-quote">
+            "Your brand deserves a home<br /><em>it controls."</em>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="brand">Forward Project <span>X</span></div>
+    <div class="copy">Prepared for Sakina Scrubs &nbsp;&middot;&nbsp; Confidential &nbsp;&middot;&nbsp; April 2026</div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
