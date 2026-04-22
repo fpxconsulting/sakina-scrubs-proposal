@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sakina Scrubs — Digital Strategy Proposal by Forward Project X</title>
+  <title>Sakina Scrubs | Digital Strategy Proposal by Forward Project X</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -37,11 +37,15 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
-    nav {
+    /* ── SITE HEADER (fixed stack: nav + prepared strip + anchor nav) ── */
+    .site-header {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
+    }
+
+    /* ── NAV ── */
+    nav {
       background: rgba(15, 35, 64, 0.97);
       backdrop-filter: blur(8px);
       padding: 0 40px;
@@ -50,25 +54,58 @@
       justify-content: space-between;
       height: 64px;
     }
-    .nav-brand {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.9);
-      letter-spacing: 0.04em;
-      font-weight: 300;
+    .nav-brand-link { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo {
+      height: 42px;
+      width: auto;
+      display: block;
     }
-    .nav-brand span { color: var(--gold); }
-    .nav-links { display: flex; gap: 32px; }
-    .nav-links a {
+    .nav-visit {
       font-size: 0.78rem;
       color: rgba(255,255,255,0.6);
       text-decoration: none;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-visit:hover { color: var(--gold); }
+
+    /* ── PREPARED STRIP ── */
+    .prepared-strip {
+      background: var(--gold-light);
+      padding: 9px 24px;
+      text-align: center;
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      border-bottom: 1px solid rgba(181,137,42,0.12);
+    }
+
+    /* ── ANCHOR NAV ── */
+    .anchor-nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-light);
+      padding: 10px 24px;
+    }
+    .anchor-nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    .anchor-nav a {
+      font-size: 0.66rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
       font-weight: 500;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--gold); }
+    .anchor-nav a:hover { color: var(--navy); }
 
     /* ── HERO ── */
     .hero {
@@ -78,7 +115,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      padding: 120px 80px 80px;
+      padding: 180px 80px 100px;
       position: relative;
       overflow: hidden;
     }
@@ -105,9 +142,20 @@
       text-transform: uppercase;
       color: var(--gold);
       font-weight: 500;
-      margin-bottom: 28px;
+      margin-bottom: 14px;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+    .hero-bespoke {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 0.85s ease forwards 0.3s;
     }
     .hero h1 {
       font-family: var(--serif);
@@ -191,8 +239,8 @@
       font-size: 0.68rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 500;
+      color: #a07820 !important;
+      font-weight: 600 !important;
       margin-bottom: 20px;
       display: flex;
       align-items: center;
@@ -254,22 +302,26 @@
     }
     .deliverable-card {
       background: var(--white);
-      padding: 40px;
+      padding: 48px;
       position: relative;
-      transition: background 0.2s;
+      border-left: 3px solid transparent;
+      transition: background 0.2s, border-left-color 0.2s;
     }
-    .deliverable-card:hover { background: #fafafa; }
+    .deliverable-card:hover {
+      background: #fafafa;
+      border-left-color: var(--blue);
+    }
     .deliverable-num {
       font-family: var(--serif);
-      font-size: 2.5rem;
-      color: var(--blue-light);
+      font-size: 3rem;
+      color: rgba(15, 35, 64, 0.15);
       font-weight: 600;
       line-height: 1;
       margin-bottom: 16px;
     }
     .deliverable-title {
       font-family: var(--serif);
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 400;
       color: var(--navy);
       margin-bottom: 12px;
@@ -285,8 +337,8 @@
     #why { background: var(--navy); max-width: 100%; padding: 100px 0; }
     #why .inner { max-width: 1100px; margin: 0 auto; padding: 0 80px; }
     #why .section-title { color: var(--white); }
-    #why .section-label { color: var(--gold); }
-    #why p { color: rgba(255,255,255,0.55); }
+    #why .section-label { color: #a07820 !important; font-weight: 600 !important; }
+    #why p { color: rgba(255,255,255,0.72); font-weight: 400; }
 
     .why-grid {
       display: grid;
@@ -308,21 +360,21 @@
     }
     .why-card p {
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.68);
       line-height: 1.8;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     /* ── TIMELINE ── */
-    #timeline { background: var(--white); max-width: 100%; padding: 100px 0; }
+    #timeline { background: var(--sand); max-width: 100%; padding: 100px 0; }
     #timeline .inner { max-width: 1100px; margin: 0 auto; padding: 0 80px; }
 
     .timeline-rows { margin-top: 48px; }
     .timeline-row {
       display: grid;
-      grid-template-columns: 100px 1fr;
+      grid-template-columns: 140px 1fr;
       gap: 40px;
-      padding: 32px 0;
+      padding: 44px 0;
       border-bottom: 1px solid var(--gray-light);
       align-items: start;
     }
@@ -331,12 +383,24 @@
       font-family: var(--serif);
       font-size: 1rem;
       font-weight: 600;
-      color: var(--blue);
+      color: var(--navy);
       padding-top: 3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .timeline-week::before {
+      content: '';
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
     }
     .timeline-content-title {
       font-family: var(--serif);
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 400;
       color: var(--navy);
       margin-bottom: 8px;
@@ -371,7 +435,8 @@
     #investment { background: var(--navy); max-width: 100%; padding: 100px 0; }
     #investment .inner { max-width: 1100px; margin: 0 auto; padding: 0 80px; }
     #investment .section-title { color: var(--white); }
-    #investment .section-label { color: var(--gold); }
+    #investment .section-label { color: #a07820 !important; font-weight: 600 !important; }
+    #investment p { color: rgba(255,255,255,0.72); font-weight: 400; }
 
     .investment-card {
       background: rgba(255,255,255,0.04);
@@ -406,9 +471,10 @@
     }
     .investment-type {
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.72);
       letter-spacing: 0.08em;
       margin-bottom: 40px;
+      font-weight: 400;
     }
     .investment-divider {
       width: 40px;
@@ -418,21 +484,31 @@
     }
     .investment-desc {
       font-size: 0.95rem;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.72);
       line-height: 1.8;
       max-width: 560px;
       margin: 0 auto;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     /* ── NEXT STEP ── */
     #next { background: var(--white); max-width: 100%; padding: 100px 0; }
     #next .inner { max-width: 1100px; margin: 0 auto; padding: 0 80px; }
 
+    .next-emphasis {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--navy);
+      font-weight: 400;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
     /* ── CONTACT ── */
     .contact-block {
       background: var(--sand);
       border: 1px solid var(--gray-light);
+      border-top: 2px solid var(--gold);
       padding: 48px;
       margin-top: 48px;
       display: grid;
@@ -440,34 +516,37 @@
       gap: 48px;
       align-items: center;
     }
+    .contact-left {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-self: center;
+    }
     .contact-greeting {
       font-family: var(--serif);
       font-size: 1rem;
       color: var(--gray);
-      margin-bottom: 8px;
       font-style: italic;
     }
     .contact-name {
       font-family: var(--serif);
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 400;
       color: var(--navy);
-      margin-bottom: 4px;
+      line-height: 1.2;
     }
     .contact-title {
       font-size: 0.85rem;
       color: var(--blue);
       font-weight: 500;
       letter-spacing: 0.04em;
-      margin-bottom: 24px;
     }
     .contact-company {
       font-size: 0.92rem;
       color: var(--gray);
       font-weight: 500;
-      margin-bottom: 20px;
     }
-    .contact-details { display: flex; flex-direction: column; gap: 8px; }
+    .contact-details { display: flex; flex-direction: column; gap: 10px; }
     .contact-details a, .contact-details span {
       font-size: 0.9rem;
       color: var(--gray);
@@ -478,8 +557,9 @@
 
     .contact-right {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      justify-content: flex-start;
+      align-self: center;
       gap: 20px;
     }
     .contact-quote {
@@ -487,7 +567,7 @@
       font-size: 1.6rem;
       font-weight: 300;
       color: var(--navy);
-      line-height: 1.35;
+      line-height: 1.4;
       font-style: italic;
     }
     .contact-quote em { font-style: normal; color: var(--blue); }
@@ -495,22 +575,52 @@
     /* ── FOOTER ── */
     footer {
       background: var(--navy);
-      padding: 32px 80px;
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 80px;
+    }
+    .footer-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-bottom: 28px;
     }
-    footer .brand {
-      font-family: var(--serif);
-      font-size: 0.95rem;
+    .footer-logo {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+    .footer-link {
+      font-size: 0.8rem;
       color: rgba(255,255,255,0.4);
-      font-weight: 300;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
     }
-    footer .brand span { color: var(--gold); }
-    footer .copy {
-      font-size: 0.75rem;
+    .footer-link:hover { color: var(--gold); }
+    .footer-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin-bottom: 28px;
+    }
+    .footer-bio {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+      font-weight: 400;
+      text-align: left;
+      max-width: 640px;
+      margin-bottom: 28px;
+    }
+    .footer-copy {
+      font-size: 0.72rem;
       color: rgba(255,255,255,0.25);
       letter-spacing: 0.06em;
+      text-align: left;
     }
 
     /* ── ANIMATIONS ── */
@@ -534,37 +644,58 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      nav { padding: 0 24px; }
-      .nav-links { display: none; }
-      .hero { padding: 100px 24px 60px; }
-      .hero-scroll { left: 24px; }
+      nav { padding: 0 20px; }
+      .nav-logo { height: 28px; }
+      .nav-visit { font-size: 0.68rem; letter-spacing: 0.03em; }
+      .prepared-strip { padding: 8px 16px; font-size: 0.58rem; letter-spacing: 0.18em; }
+      .anchor-nav { padding: 8px 12px; }
+      .anchor-nav-inner { gap: 14px; justify-content: space-between; }
+      .anchor-nav a { font-size: 0.56rem; letter-spacing: 0.1em; }
+
+      .hero { padding: 170px 24px 80px; }
+      .hero-scroll { display: none; }
+
       section, #opportunity .inner, #why .inner, #timeline .inner,
       #investment .inner, #next .inner { padding: 60px 24px; }
       .why-grid { grid-template-columns: 1fr; gap: 32px; }
       .deliverables-grid { grid-template-columns: 1fr; }
-      .contact-block { grid-template-columns: 1fr; gap: 32px; }
-      footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
+      .deliverable-card { padding: 36px; }
+      .timeline-row { grid-template-columns: 1fr; gap: 8px; padding: 32px 0; }
+      .contact-block { grid-template-columns: 1fr; gap: 32px; padding: 36px; }
+      .phase2-box { padding: 32px; }
+
+      footer { padding: 32px 0 24px; }
+      .footer-inner { padding: 0 24px; }
+      .footer-top { flex-direction: row; gap: 12px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-brand">Forward Project <span>X</span></div>
-    <div class="nav-links">
-      <a href="#opportunity">Vision</a>
-      <a href="#scope">Scope</a>
-      <a href="#why">Why FPX</a>
-      <a href="#timeline">Timeline</a>
-      <a href="#investment">Investment</a>
-      <a href="#next">Next Step</a>
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <nav>
+      <a href="#" class="nav-brand-link" aria-label="Forward Project X">
+        <img src="fpx-logo.png" alt="Forward Project X" class="nav-logo" height="42" />
+      </a>
+      <a href="https://forwardprojectx.com" target="_blank" rel="noopener" class="nav-visit">Visit forwardprojectx.com</a>
+    </nav>
+    <div class="prepared-strip">Prepared exclusively for Sakina Scrubs</div>
+    <div class="anchor-nav">
+      <div class="anchor-nav-inner">
+        <a href="#opportunity">Vision</a>
+        <a href="#scope">Scope</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#investment">Investment</a>
+        <a href="#next">Next Steps</a>
+      </div>
     </div>
-  </nav>
+  </header>
 
   <!-- HERO -->
   <div class="hero">
     <div class="hero-label">Digital Strategy and Web Development Proposal</div>
+    <div class="hero-bespoke">A proposal crafted for Huda Abu Sabha and Sakina Scrubs</div>
     <h1>A digital home<br /><em>worthy of the<br />brand you built.</em></h1>
     <p class="hero-sub">Prepared for Huda Abu Sabha and Sakina Scrubs. This proposal outlines a custom web strategy to establish your brand's independent digital presence and community platform.</p>
     <div class="hero-meta">
@@ -729,6 +860,7 @@
       <div class="section-label">Next Step</div>
       <h2 class="section-title">Ready to build<br /><em>when you are.</em></h2>
       <p>Upon approval, Forward Project X will begin the strategy and onboarding phase immediately. This includes project kickoff, account structuring under your ownership, and final site architecture planning tailored to the Sakina Scrubs brand.</p>
+      <p class="next-emphasis">If this direction feels aligned, Forward Project X can begin onboarding and planning immediately upon approval.</p>
       <div class="contact-block">
         <div class="contact-left">
           <div class="contact-greeting">Best regards,</div>
@@ -737,7 +869,7 @@
           <div class="contact-company">Forward Project X</div>
           <div class="contact-details">
             <span>(313) 743-3273</span>
-            <a href="https://forwardprojectx.com" target="_blank">forwardprojectx.com</a>
+            <a href="https://forwardprojectx.com" target="_blank" rel="noopener">forwardprojectx.com</a>
             <a href="mailto:a.a.bazzi@forwardprojectx.com">a.a.bazzi@forwardprojectx.com</a>
             <span>290 Town Center Dr, Suite 420D</span>
             <span>Dearborn, MI 48126</span>
@@ -754,8 +886,15 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="brand">Forward Project <span>X</span></div>
-    <div class="copy">Prepared for Sakina Scrubs &nbsp;&middot;&nbsp; Confidential &nbsp;&middot;&nbsp; April 2026</div>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <img src="fpx-logo.png" alt="Forward Project X" class="footer-logo" height="36" />
+        <a href="https://forwardprojectx.com" target="_blank" rel="noopener" class="footer-link">forwardprojectx.com</a>
+      </div>
+      <div class="footer-divider"></div>
+      <p class="footer-bio">FPX Consulting helps businesses turn strong ideas into clear, scalable brands through strategy, branding, business development, and custom digital solutions. Our work is rooted in clarity, ownership, and long-term thinking, with a focus on building assets clients can truly control as they grow. FPX Consulting is led by Ahmad Bazzi, a Comcast RISE Award recipient and Social Entrepreneurship Awardee recognized by the University of Detroit Mercy College of Business Administration. FPX has also partnered with organizations such as ACCESS and Zaman to support entrepreneurs, and with the University of Michigan Ann Arbor to help mentor new graduates.</p>
+      <div class="footer-copy">Forward Project X. All rights reserved. April 2026</div>
+    </div>
   </footer>
 
   <script>
