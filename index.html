@@ -226,7 +226,8 @@
     }
     .hero-meta {
       display: flex;
-      gap: 36px;
+      gap: 56px;
+      margin-top: 24px;
       opacity: 0;
       animation: fadeUp 1s ease forwards 0.75s;
     }
@@ -323,13 +324,18 @@
     }
     .timeline .intro { max-width: 680px; margin-bottom: 32px; }
 
-    .timeline-rows { border-top: 1px solid var(--gray-light); }
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--gray-light);
+    }
     .t-row {
+      background: var(--white);
+      padding: 28px 32px;
       display: grid;
       grid-template-columns: 130px 1fr;
       gap: 48px;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--gray-light);
       align-items: start;
     }
     .t-week {
@@ -416,7 +422,29 @@
       max-width: 500px;
       margin: 0 auto;
     }
-    .inv-desc + .inv-desc { margin-top: 12px; }
+    .inv-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      text-align: left;
+      max-width: 420px;
+    }
+    .inv-list li {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .inv-list li::before {
+      content: "•";
+      color: var(--gold);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
 
     .scope-note { margin-top: 48px; max-width: 680px; }
 
@@ -438,7 +466,7 @@
 
     .contact-block {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 56px;
       align-items: center;
       background: var(--sand);
@@ -491,22 +519,6 @@
     }
     .contact-details a { color: var(--blue); }
     .contact-details a:hover { text-decoration: underline; }
-
-    .contact-right {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      align-self: center;
-    }
-    .contact-quote {
-      font-family: var(--serif);
-      font-size: 1.65rem;
-      font-weight: 300;
-      color: var(--navy);
-      line-height: 1.4;
-      font-style: italic;
-    }
-    .contact-quote em { font-style: normal; color: var(--blue); }
 
     /* FOOTER */
     .site-footer {
@@ -586,7 +598,7 @@
       .body-light { font-size: 1rem; line-height: 1.88; }
       .section-label { font-size: 0.72rem; letter-spacing: 0.18em; }
       .section-title { font-size: 1.85rem; }
-      .inv-desc { color: rgba(255,255,255,0.72); font-weight: 400; }
+      .inv-list li { color: rgba(255,255,255,0.72); font-weight: 400; }
 
       /* Section padding */
       .opportunity,
@@ -603,7 +615,8 @@
       .d-desc { font-size: 0.95rem; line-height: 1.82; }
 
       /* Timeline */
-      .t-row { grid-template-columns: 1fr; gap: 10px; padding: 36px 0; }
+      .timeline-grid { grid-template-columns: 1fr; }
+      .t-row { grid-template-columns: 1fr; gap: 10px; padding: 24px 20px; }
       .t-week { font-size: 0.75rem; }
       .t-title { font-size: 1.2rem; margin-bottom: 8px; }
       .t-desc { font-size: 0.92rem; line-height: 1.8; }
@@ -611,7 +624,6 @@
       /* Contact block */
       .contact-block { grid-template-columns: 1fr; gap: 36px; padding: 40px 28px; }
       .contact-name { font-size: 1.75rem; }
-      .contact-quote { font-size: 1.35rem; }
 
       /* Footer: bio may be manually shortened in a future pass if needed on mobile */
       .site-footer { padding: 56px 28px 40px; }
@@ -639,8 +651,8 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-bespoke">A proposal crafted for Huda Abu Sabha and Sakina Scrubs</div>
-    <h1>A digital home<br /><em>worthy of the<br />brand you built.</em></h1>
+    <div class="hero-bespoke">A proposal crafted for Huda Abusabha and Sakina Scrubs</div>
+    <h1>A digital home <em>worthy of the brand you built.</em></h1>
     <p class="hero-sub">This proposal outlines a custom web strategy to establish your brand's independent digital presence, community platform, and long-term growth foundation.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">
@@ -663,9 +675,8 @@
     <div class="inner reveal">
       <div class="section-label">The Opportunity</div>
       <h2 class="section-title">Your brand has outgrown<br /><em>what Etsy can carry.</em></h2>
-      <p class="body-text">Sakina Scrubs is not just an apparel brand. Through products like the Al Huda Hijab, you are solving a specific and underserved problem: Muslim and Arab women in healthcare have long lacked workwear that supports both modesty and professional function. Your background as a nurse, your participation in entrepreneurship programs, and the media recognition you have already earned are the ingredients of a brand with real credibility and real staying power.</p>
-      <p class="body-text">Your Etsy storefront has proven that demand exists. But Etsy has a ceiling. It can sell a product. It cannot fully carry a brand story, build a loyal community, or give you the long-term digital foundation that a business like Sakina Scrubs deserves.</p>
-      <p class="body-text">This project is about closing that gap and giving your brand a home that matches its ambition.</p>
+      <p class="body-text">Sakina Scrubs is solving a real problem: Muslim and Arab women in healthcare have long lacked workwear that supports both modesty and professional function. Your background as a nurse and the recognition you have already earned make this a brand with genuine credibility and staying power.</p>
+      <p class="body-text">Etsy has proven the demand exists. But it cannot carry a brand story, build a loyal community, or give you the digital foundation Sakina Scrubs deserves. This project is about giving your brand a home that matches its ambition.</p>
     </div>
   </section>
 
@@ -705,7 +716,7 @@
       <div class="section-label">Project Timeline</div>
       <h2 class="section-title">A focused four-week build<br /><em>with clear milestones.</em></h2>
     </div>
-    <div class="timeline-rows">
+    <div class="timeline-grid">
       <div class="t-row reveal">
         <div class="t-week">Week 1</div>
         <div>
@@ -743,17 +754,22 @@
       <div class="inv-amount">$3,500</div>
       <div class="inv-type">One-time project investment</div>
       <div class="inv-rule"></div>
-      <p class="inv-desc">This covers the complete Phase 1 scope: custom website design and development, integrated blog, editorial dashboard, community comment system, mobile optimization, and the full live handoff process. No recurring infrastructure fees for the core website stack after delivery.</p>
-      <p class="inv-desc">This foundation is also designed to support a future direct e-commerce layer when Sakina Scrubs is ready to move beyond Etsy.</p>
-      <p class="inv-desc">Includes full client ownership from day one, zero recurring hosting infrastructure fees for the core website stack, and a live handoff process to ensure clean transfer of control at project close.</p>
+      <ul class="inv-list">
+        <li>Custom website design and development</li>
+        <li>Integrated blog and editorial dashboard</li>
+        <li>Community comment system and mobile optimization</li>
+        <li>Full live handoff process with clean ownership transfer</li>
+        <li>Zero recurring hosting infrastructure fees after delivery</li>
+        <li>Future e-commerce expansion layer when ready</li>
+        <li>Full client ownership from day one</li>
+      </ul>
     </div>
   </section>
 
   <section class="next-step" id="next">
     <div class="intro reveal">
       <div class="section-label">Next Steps</div>
-      <h2 class="section-title">Ready to build<br /><em>when you are.</em></h2>
-      <p class="body-text">Upon approval, Forward Project X will begin the strategy and onboarding phase immediately. This includes project kickoff, account structuring under your ownership, and final site architecture planning tailored to the Sakina Scrubs brand.</p>
+      <h2 class="section-title">Ready to build <em>when you are.</em></h2>
     </div>
     <p class="next-emphasis reveal">If this direction feels aligned, Forward Project X can begin onboarding and planning immediately upon approval.</p>
     <div class="contact-block reveal">
@@ -768,11 +784,6 @@
           <a href="mailto:a.a.bazzi@forwardprojectx.com">a.a.bazzi@forwardprojectx.com</a>
           <span>290 Town Center Dr, Suite 420D</span>
           <span>Dearborn, MI 48126</span>
-        </div>
-      </div>
-      <div class="contact-right">
-        <div class="contact-quote">
-          "Your brand deserves<br />a home <em>it controls.</em>"
         </div>
       </div>
     </div>
